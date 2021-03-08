@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Andrés Hernández Ortega
+// FECHA: 09/03/2021
+// EMAIL: alu0101333588@gmail.com
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 2
@@ -12,7 +12,7 @@
 
 #include "rational_t.hpp"
 
-rational_t::rational_t(const int n, const int d)
+rational_t::rational_t(const int n, const int d) 
 {
   assert(d != 0);
   num_ = n, den_ = d;
@@ -23,7 +23,7 @@ rational_t::rational_t(const int n, const int d)
 // pauta de estilo [83]: tipo retornado en línea anterior al método
 inline
 int
-rational_t::get_num() const
+rational_t::get_num() const 
 {
   return num_;
 }
@@ -32,7 +32,7 @@ rational_t::get_num() const
 
 inline
 int
-rational_t::get_den() const
+rational_t::get_den() const 
 {
   return den_;
 }
@@ -40,7 +40,7 @@ rational_t::get_den() const
 
   
 void
-rational_t::set_num(const int n)
+rational_t::set_num(const int n) 
 {
   num_ = n;
 }
@@ -48,7 +48,7 @@ rational_t::set_num(const int n)
 
   
 void
-rational_t::set_den(const int d)
+rational_t::set_den(const int d) 
 {
   assert(d != 0);
   den_ = d;
@@ -58,7 +58,7 @@ rational_t::set_den(const int d)
 
 inline
 double
-rational_t::value() const
+rational_t::value() const 
 { 
   return double(get_num()) / get_den();
 }
@@ -143,6 +143,8 @@ rational_t
 operator+(const rational_t& a, const rational_t& b)
 {
   // rellenar código
+  return a.add(b);
+
 }
 
 
@@ -151,6 +153,7 @@ rational_t
 operator-(const rational_t& a, const rational_t& b)
 {
   // rellenar código
+  return a.substract(b);
 }
 
 
@@ -159,6 +162,7 @@ rational_t
 operator*(const rational_t& a, const rational_t& b)
 {
   // rellenar código
+  return a.multiply(b);
 }
 
 
@@ -167,6 +171,7 @@ rational_t
 operator/(const rational_t& a, const rational_t& b)
 {
   // rellenar código
+  return a.divide(b);
 }
 
 
@@ -175,7 +180,7 @@ operator/(const rational_t& a, const rational_t& b)
 void
 rational_t::write(ostream& os) const
 {
-  os << get_num() << "/" << get_den() << "=" << value() << endl;
+  os << get_num() << "/" << get_den() << " = " << value() << endl;
 }
 
 

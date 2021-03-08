@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Andrés Hernández Ortega
+// FECHA: 09/03/2021
+// EMAIL: alu0101333588@gmail.com
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 2
@@ -21,8 +21,8 @@ template<class T>
 class matrix_t
 {
 public:
-  matrix_t(const int = 0, const int = 0);
-  ~matrix_t();
+  matrix_t(const int = 0, const int = 0); // constructor
+  ~matrix_t(); // destructor
   
   void resize(const int, const int);
   
@@ -41,9 +41,8 @@ public:
   // operaciones y operadores
   void multiply(const matrix_t<T>&, const matrix_t<T>&);
 
-  void write(ostream& = cout) const;
-  void read(istream& = cin);
-
+  void write(ostream& = cout) const; // escritura a pantalla
+  void read(istream& = cin); // lectura desde teclado
 private:
   int m_, n_; // m_ filas y n_ columnas
   vector_t<T> v_;
@@ -184,4 +183,15 @@ void
 matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
 {
   // rellenar código
+  assert(A.get_n() == B.get_m());  
+  resize(A.get_m(), B.get_n());
+  
+  for(int i=1; i <= A.get_m(); i++){ // n_ columas
+    for(int j=1; j <= B.get_n(); j++){ // m_ filas
+      at(i, j) = 0;
+      for(int z=1; z <= A.get_n(); z++){ // n_ columnas
+        at(i, j) = at(i, j) + A.at(i, z)*B.at(z, j);
+      }
+    }
+  }
 }

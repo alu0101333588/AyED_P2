@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Andrés Hernández Ortega
+// FECHA: 09/03/2021
+// EMAIL: alu0101333588@gmail.com
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 2
@@ -18,9 +18,9 @@ using namespace std;
 template<class T>
 class vector_t
 {
-public:
-  vector_t(const int = 0);
-  ~vector_t();
+public: // elementos publicos
+  vector_t(const int = 0); // constructor
+  ~vector_t(); // destructor
   
   void resize(const int);
   
@@ -39,10 +39,10 @@ public:
   const T& at(const int) const;
   const T& operator[](const int) const;
 
-  void write(ostream& = cout) const;
-  void read(istream& = cin);
+  void write(ostream& = cout) const; // escritura por pantalla
+  void read(istream& = cin); // lectura desde teclado
 
-private:
+private: // elementos privados
   T *v_;
   int sz_;
   
@@ -201,6 +201,12 @@ T
 scal_prod(const vector_t<T>& v, const vector_t<T>& w)
 {
   // rellenar código
+  assert(v.get_size() == w.get_size());
+  T resultado = 0;
+  for(int i=0; i < v.get_size(); i++){
+    resultado = resultado + v.at(i)*w.at(i);
+  }
+  return(resultado);
 }
 
 
@@ -209,4 +215,13 @@ double
 scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
 {
   // rellenar código 
+  assert(v.get_size() == w.get_size());
+  double resultado = 0.0;
+
+  for(int i=0; i < v.get_size(); i++){
+    resultado = resultado + v.at(i).multiply(w.at(i)).value(); // value = (decimal, no fracional)
+  }
+
+  return(resultado);
+
 }
